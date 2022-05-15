@@ -17,8 +17,6 @@ class Player():
         self.info["count"] = 0
         self.info["acumulado"] = 0
 
-# player1 = Player("Ariel")
 
-# print(player1.info["count"])
         
 

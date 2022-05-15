@@ -1,12 +1,16 @@
-from ast import List
-import random
+from asyncore import write
+import csv
+from dataclasses import field  
 
-def orderQuestion():
-    lists = [1, 2, 3, 4]
-    for i in range(3):
-        random.shuffle(lists)
-        print(lists)
+info = {}
 
-num = orderQuestion()
+info["name"] = "Ariel"
+info["count"] = 5
+info["acumulado"] = 1500
 
-#print(type(num))
+
+with open('files/history.csv','w') as historyFile:
+    fieldnames = ['name','count','acumulado']
+    write = csv.DictWriter(historyFile,fieldnames=fieldnames)
+    write.writerow(info)
+
