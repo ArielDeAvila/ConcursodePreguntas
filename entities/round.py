@@ -56,15 +56,18 @@ class Round():
         message_frame.MessageWindow(self.questions.master, acc,self.player)
     
     def nextRound(self):
-        if self.numCategory < 5:
-            self.player.info["acumulado"] += int(self.player.info["categoria" + self.numCategory]["value"])
-            round()
+        if int(self.numCategory) < 5:
+            self.player.info["acumulado"] += int(self.player.info["categoria" + str(self.numCategory)]["value"])
+            self.round()
         else:
-            self.player.info["acumulado"] += int(self.player.info["categoria" + self.numCategory]["value"])
+            self.player.info["acumulado"] += int(self.player.info["categoria" + str(self.numCategory)]["value"])
             self.quitGame()
     
     def goodResponse(self,txt):
-        if txt == self.player.info["categoria" + self.numCategory]["goodResponse"]:
+        num = self.player.info["categoria" + self.numCategory]["goodResponse"]
+        goodResponse = self.player.info["categoria" + self.numCategory]["response"+str(num)]
+        
+        if txt == goodResponse:
             self.nextRound()
         else:
             self.quitGame()
