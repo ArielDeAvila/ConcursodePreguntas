@@ -17,7 +17,7 @@ class StartWindow(Frame):
         
         player = jugador.Player(name)
         details = details_frame.detailWindow(self.master,player)
-        questions = question_frame.QuestionWindow(self.master, player,details)
+        questions = question_frame.QuestionWindow(self.master)
         
         round.Round(questions,details,player)
         

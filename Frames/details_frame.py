@@ -5,15 +5,14 @@ from Frames import message_frame, history_frame
 class detailWindow(Frame):
     def __init__(self,master=None,player:dict={}):
         super().__init__(master)
-        self.master = master
         self.player = player
-        self.place(relx=0,rely=0,relwidth=1,relheight=0.5)
+        self.master = master
         self.createWidgets()
         
     def quit_game(self):
         acc = self.lbl_acumulado_valor.cget("text")
         
-        message_frame.MessageWindow(self.master,acc)
+        message_frame.MessageWindow(self.master,acc,self.player)
              
         
     def createWidgets(self):
@@ -22,14 +21,10 @@ class detailWindow(Frame):
         self.juegoStyle = tkFont.Font(family="Lucida Grande", size=38)
         
         self.lbl_acumulado = Label(self,text="Acumulado",font=self.accStyle,fg="red")
-        
-        self.lbl_acumulado_valor = Label(
-            self, text=self.player.info["acumulado"], font=self.accStyle, anchor="e")
+        self.lbl_acumulado_valor = Label(self, font=self.accStyle, anchor="e")
         
         self.lbl_enjuego = Label(self,text="Premio en juego",font=self.juegoStyle,fg="red",anchor="center")
-        
-        self.lbl_enjuego_valor = Label(self, text=
-            self.player.info["categoria1"]["value"], font=self.Style, anchor="center")
+        self.lbl_enjuego_valor = Label(self, font=self.Style, anchor="center")
         
         self.btn_quit = Button(self,text="Retirarse",font=self.accStyle,command=self.quit_game)
         
