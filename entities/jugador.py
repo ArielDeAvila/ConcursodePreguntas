@@ -6,8 +6,7 @@ class Player():
         self.info = {}
         self.question()
         self.extraInfo()
-        
-        
+             
     def question(self):
         searchInfo = question.Question()
         self.info = searchInfo.information

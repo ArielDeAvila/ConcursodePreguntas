@@ -1,5 +1,5 @@
 from Frames import question_frame, details_frame, history_frame
-from entities import jugador
+from entities import jugador, round
 from tkinter import *
 import tkinter.font as tkFont
 
@@ -16,9 +16,10 @@ class StartWindow(Frame):
         self.destroy()
         
         player = jugador.Player(name)
-        
         details = details_frame.detailWindow(self.master,player)
-        question_frame.QuestionWindow(self.master, player,details)
+        questions = question_frame.QuestionWindow(self.master, player,details)
+        
+        round.Round(questions,details,player)
         
     def createWidgets(self):
         self.labelStyle = tkFont.Font(family="Lucida Grande", size=48)
